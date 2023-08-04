@@ -4,12 +4,13 @@ using UnityEngine;
 
 public class PlayerController : MonoBehaviour
 {
-    public float speed = 30f;
+    [SerializeField] float speed = 30f;
     //constraint player's movements
     private float zBound = 5.5f;
     private float xBound = 13.0f;
 
     private Rigidbody playerRb;
+    public ParticleSystem explosionParticle;
 
     // Start is called before the first frame update
     void Start()
@@ -25,7 +26,7 @@ public class PlayerController : MonoBehaviour
     }
 
     //Moves player in horizontal & vertical based on player's input
-    void MovePlayer()
+    void MovePlayer() //ABSTRACTION
     {
         float horizontalInput = Input.GetAxis("Horizontal");
         float verticalInput = Input.GetAxis("Vertical");
@@ -35,7 +36,7 @@ public class PlayerController : MonoBehaviour
     }
 
     //Constrain player's movements in boundaries
-    void ConstrainPlayerPosition()
+    void ConstrainPlayerPosition() //ABSTRACTION
     {
         //z-axis constraints
         if (transform.position.z < -zBound)
@@ -62,10 +63,13 @@ public class PlayerController : MonoBehaviour
         if (collision.gameObject.CompareTag("Enemy"))
         {
             Debug.Log("Player has collided with an enemy");
+            explosionParticle.Play();
+            Destroy(collision.gameObject);
         }
-        if (collision.gameObject.CompareTag("Meteor"))
+        if (collision.gameObject.CompareTag("Rock"))
         {
-            Debug.Log("Player has collided with a meteor");
+            Debug.Log("Player has collided with a rock");
+            explosionParticle.Play();
         }
     }
 }

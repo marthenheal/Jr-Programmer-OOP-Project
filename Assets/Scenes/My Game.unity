@@ -156,7 +156,7 @@ MonoBehaviour:
   - {fileID: 3649561715607787851, guid: 16d6d5cc726458e4ab7de0422653451f, type: 3}
   - {fileID: 2419060788882815079, guid: 7fa8d3ae1f0978347acd739b72d99902, type: 3}
   - {fileID: 2018892045075302241, guid: 526ceeefb4f46ce429cc76819858e573, type: 3}
-  meteors:
+  rocks:
   - {fileID: 5489918943575140149, guid: 3a2b39b310b18ea479afbbdede8bfa93, type: 3}
   - {fileID: 890014766021513811, guid: b52eaed5d1c9c6041982d6ba0184abe0, type: 3}
 --- !u!4 &312661827
@@ -188,7 +188,6 @@ GameObject:
   - component: {fileID: 688531331}
   - component: {fileID: 688531336}
   - component: {fileID: 688531337}
-  - component: {fileID: 688531338}
   m_Layer: 0
   m_Name: Ground
   m_TagString: Untagged
@@ -298,18 +297,6 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 0a3b52e8b5ab3824cb5443ed6451f58c, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
---- !u!114 &688531338
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 688531330}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 2b5218f19d2704b4aa13f704b0853a1b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   speed: 3
@@ -498,6 +485,18 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 1093521673, guid: 47f50bf63c6b2b1469637ed7d664755b, type: 3}
+      propertyPath: InitialModule.rotation3D
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1093521673, guid: 47f50bf63c6b2b1469637ed7d664755b, type: 3}
+      propertyPath: InitialModule.startSize.scalar
+      value: 0.0001
+      objectReference: {fileID: 0}
+    - target: {fileID: 1093521673, guid: 47f50bf63c6b2b1469637ed7d664755b, type: 3}
+      propertyPath: InitialModule.startSize.minScalar
+      value: 0.00001
+      objectReference: {fileID: 0}
     - target: {fileID: 8883740721554795746, guid: 47f50bf63c6b2b1469637ed7d664755b, type: 3}
       propertyPath: m_RootOrder
       value: 4
@@ -541,18 +540,6 @@ PrefabInstance:
     - target: {fileID: 8883740721554795746, guid: 47f50bf63c6b2b1469637ed7d664755b, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 8883740721554795747, guid: 47f50bf63c6b2b1469637ed7d664755b, type: 3}
-      propertyPath: m_Mass
-      value: 500
-      objectReference: {fileID: 0}
-    - target: {fileID: 8883740721554795747, guid: 47f50bf63c6b2b1469637ed7d664755b, type: 3}
-      propertyPath: m_Constraints
-      value: 116
-      objectReference: {fileID: 0}
-    - target: {fileID: 8883740721554795748, guid: 47f50bf63c6b2b1469637ed7d664755b, type: 3}
-      propertyPath: speed
-      value: 900
       objectReference: {fileID: 0}
     - target: {fileID: 8883740721554795774, guid: 47f50bf63c6b2b1469637ed7d664755b, type: 3}
       propertyPath: m_Name

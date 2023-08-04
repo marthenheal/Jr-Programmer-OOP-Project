@@ -5,7 +5,7 @@ using UnityEngine;
 public class SpawnManager : MonoBehaviour
 {
     public GameObject[] enemies;
-    public GameObject[] meteors;
+    public GameObject[] rocks;
 
     private float zSpawnPos = 10.0f;
     private float xSpawnRange = 12.0f;
@@ -13,22 +13,16 @@ public class SpawnManager : MonoBehaviour
 
     private float startDelay = 1.0f;
     private float enemySpawnTime = 3.0f;
-    private float meteorSpawnTime = 2.0f;
+    private float rockSpawnTime = 2.0f;
 
     // Start is called before the first frame update
     void Start()
     {
         InvokeRepeating("SpawnRandomEnemy", startDelay, enemySpawnTime);
-        InvokeRepeating("SpawnRandomMeteor", startDelay, meteorSpawnTime);
+        InvokeRepeating("SpawnRandomRock", startDelay, rockSpawnTime);
     }
 
-    // Update is called once per frame
-    void Update()
-    {
-        
-    }
-
-    void SpawnRandomEnemy()
+    void SpawnRandomEnemy() //ABSTRACTION
     {
         float randomX = Random.Range(-xSpawnRange, xSpawnRange);
         int randomIndex = Random.Range(0, enemies.Length);
@@ -38,13 +32,13 @@ public class SpawnManager : MonoBehaviour
         Instantiate(enemies[randomIndex], spawnPos, enemies[randomIndex].gameObject.transform.rotation);
     }
 
-    void SpawnRandomMeteor()
+    void SpawnRandomRock() //ABSTRACTION
     {
         float randomX = Random.Range(-xSpawnRange, xSpawnRange);
-        int randomIndex = Random.Range(0, meteors.Length);
+        int randomIndex = Random.Range(0, rocks.Length);
 
         Vector3 spawnPos = new Vector3(randomX, yOffset, zSpawnPos);
 
-        Instantiate(meteors[randomIndex], spawnPos, meteors[randomIndex].gameObject.transform.rotation);
+        Instantiate(rocks[randomIndex], spawnPos, rocks[randomIndex].gameObject.transform.rotation);
     }
 }

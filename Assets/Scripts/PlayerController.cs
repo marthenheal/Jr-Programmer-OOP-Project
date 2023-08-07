@@ -12,18 +12,23 @@ public class PlayerController : MonoBehaviour
     private Rigidbody playerRb;
     public ParticleSystem explosionParticle;
 
+    private GameUIHandler gameUI;
+
     // Start is called before the first frame update
     void Start()
     {
+        gameUI = GameObject.Find("GameUIHandler").GetComponent<GameUIHandler>();
         playerRb = GetComponent<Rigidbody>();
-        Debug.Log(DataManager.Instance.playerName);
     }
 
     // Update is called once per frame
     void Update()
     {
-        MovePlayer();
-        ConstrainPlayerPosition();
+        if (gameUI.isGameActive) 
+        {
+            MovePlayer();
+            ConstrainPlayerPosition();
+        }       
     }
 
     //Moves player in horizontal & vertical based on player's input
@@ -66,11 +71,13 @@ public class PlayerController : MonoBehaviour
             Debug.Log("Player has collided with an enemy");
             explosionParticle.Play();
             Destroy(collision.gameObject);
+            gameUI.GameOver();
         }
         if (collision.gameObject.CompareTag("Rock"))
         {
             Debug.Log("Player has collided with a rock");
             explosionParticle.Play();
+            gameUI.GameOver();
         }
     }
 }

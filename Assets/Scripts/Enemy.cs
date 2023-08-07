@@ -24,10 +24,19 @@ public class Enemy : ObjectToSpawn //INHERITANCE -> Enemy is a child of ObjectTo
 
     [SerializeField] float destroyBoundPosZ;
 
+    private GameUIHandler gameUI;
+
+    private void Start()
+    {
+        gameUI = GameObject.Find("GameUIHandler").GetComponent<GameUIHandler>();
+    }
     // Update is called once per frame
     void Update()
     {
-        MoveDown(speed);
-        DestroyOutOfBounds(destroyBoundPosZ);
+        if (gameUI.isGameActive)
+        {
+            MoveDown(speed);
+            DestroyOutOfBounds(destroyBoundPosZ);
+        }       
     }
 }

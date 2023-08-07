@@ -8,18 +8,22 @@ public class Obstacle : ObjectToSpawn //INHERITANCE -> Obstacle is a child of Ob
     [SerializeField] float destroyBoundPosZ;
 
     public ParticleSystem explosionParticle;
+    private GameUIHandler gameUI;
 
     // Start is called before the first frame update
     void Start()
     {
-        
+        gameUI = GameObject.Find("GameUIHandler").GetComponent<GameUIHandler>();
     }
 
     // Update is called once per frame
     void Update()
     {
-        MoveDown(speed);
-        DestroyOutOfBounds(destroyBoundPosZ);
+        if (gameUI.isGameActive)
+        {
+            MoveDown(speed);
+            DestroyOutOfBounds(destroyBoundPosZ);
+        }      
     }
 
     private void OnCollisionEnter(Collision collision) //idk why particles isn't working on enemies, but they work on rocks, so...

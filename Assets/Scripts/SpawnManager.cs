@@ -7,6 +7,8 @@ public class SpawnManager : MonoBehaviour
     public GameObject[] enemies;
     public GameObject[] rocks;
 
+    private GameUIHandler gameUI;
+
     private float zSpawnPos = 10.0f;
     private float xSpawnRange = 12.0f;
     private float yOffset = 0.75f;
@@ -18,6 +20,7 @@ public class SpawnManager : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
+        gameUI = GameObject.Find("GameUIHandler").GetComponent<GameUIHandler>();
         InvokeRepeating("SpawnRandomEnemy", startDelay, enemySpawnTime);
         InvokeRepeating("SpawnRandomRock", startDelay, rockSpawnTime);
     }
@@ -29,7 +32,10 @@ public class SpawnManager : MonoBehaviour
 
         Vector3 spawnPos = new Vector3(randomX, yOffset, zSpawnPos);
 
-        Instantiate(enemies[randomIndex], spawnPos, enemies[randomIndex].gameObject.transform.rotation);
+        if (gameUI.isGameActive)
+        {
+            Instantiate(enemies[randomIndex], spawnPos, enemies[randomIndex].gameObject.transform.rotation);
+        }
     }
 
     void SpawnRandomRock() //ABSTRACTION
@@ -39,6 +45,9 @@ public class SpawnManager : MonoBehaviour
 
         Vector3 spawnPos = new Vector3(randomX, yOffset, zSpawnPos);
 
-        Instantiate(rocks[randomIndex], spawnPos, rocks[randomIndex].gameObject.transform.rotation);
+        if (gameUI.isGameActive)
+        {
+            Instantiate(rocks[randomIndex], spawnPos, rocks[randomIndex].gameObject.transform.rotation);
+        }          
     }
 }

@@ -8,9 +8,13 @@ public class RepeatGround : ObjectToSpawn //INHERITANCE -> RepeatGround is a chi
     private float repeatLength;
     [SerializeField] float speed;
 
+    private GameUIHandler gameUI;
+
     // Start is called before the first frame update
     void Start()
     {
+        gameUI = GameObject.Find("GameUIHandler").GetComponent<GameUIHandler>();
+
         startPos = transform.position;
         repeatLength = GetComponent<BoxCollider>().size.z;
     }
@@ -18,7 +22,10 @@ public class RepeatGround : ObjectToSpawn //INHERITANCE -> RepeatGround is a chi
     // Update is called once per frame
     void Update()
     {
-        MoveDown(speed);       
+        if (gameUI.isGameActive)
+        {
+            MoveDown(speed);
+        }             
     }
 
     public override void MoveDown(float speed) //POLYMORPHISM -> ground is moving down but the image of it also repeats under player

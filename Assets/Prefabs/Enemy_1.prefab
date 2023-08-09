@@ -34,7 +34,6 @@ Transform:
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 5880813059114317297}
-  - {fileID: 746124513412316377}
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 180, z: 0}
@@ -97,10 +96,10 @@ BoxCollider:
   m_GameObject: {fileID: 3649561715607787851}
   m_Material: {fileID: 0}
   m_IsTrigger: 0
-  m_Enabled: 0
+  m_Enabled: 1
   serializedVersion: 2
-  m_Size: {x: 1, y: 1, z: 1}
-  m_Center: {x: 0, y: 0, z: 0}
+  m_Size: {x: 1, y: 0.6239383, z: 1}
+  m_Center: {x: 0, y: 0.050440595, z: 0}
 --- !u!54 &3649561715607787861
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -129,82 +128,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4e2b8773b7142e94e96945d721504838, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  m_speed: -7
-  destroyBoundPosZ: -10
---- !u!1001 &746124513411915685
-PrefabInstance:
-  m_ObjectHideFlags: 0
-  serializedVersion: 2
-  m_Modification:
-    m_TransformParent: {fileID: 3649561715607787863}
-    m_Modifications:
-    - target: {fileID: 191186, guid: bf929cdd72b25ee4e9ebe93e49ea0f96, type: 3}
-      propertyPath: m_Name
-      value: FX_Explosion_Rubble
-      objectReference: {fileID: 0}
-    - target: {fileID: 402300, guid: bf929cdd72b25ee4e9ebe93e49ea0f96, type: 3}
-      propertyPath: m_RootOrder
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 402300, guid: bf929cdd72b25ee4e9ebe93e49ea0f96, type: 3}
-      propertyPath: m_LocalScale.x
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 402300, guid: bf929cdd72b25ee4e9ebe93e49ea0f96, type: 3}
-      propertyPath: m_LocalScale.y
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 402300, guid: bf929cdd72b25ee4e9ebe93e49ea0f96, type: 3}
-      propertyPath: m_LocalScale.z
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 402300, guid: bf929cdd72b25ee4e9ebe93e49ea0f96, type: 3}
-      propertyPath: m_LocalPosition.x
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 402300, guid: bf929cdd72b25ee4e9ebe93e49ea0f96, type: 3}
-      propertyPath: m_LocalPosition.y
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 402300, guid: bf929cdd72b25ee4e9ebe93e49ea0f96, type: 3}
-      propertyPath: m_LocalPosition.z
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 402300, guid: bf929cdd72b25ee4e9ebe93e49ea0f96, type: 3}
-      propertyPath: m_LocalRotation.w
-      value: 0.7133226
-      objectReference: {fileID: 0}
-    - target: {fileID: 402300, guid: bf929cdd72b25ee4e9ebe93e49ea0f96, type: 3}
-      propertyPath: m_LocalRotation.x
-      value: -0.7008359
-      objectReference: {fileID: 0}
-    - target: {fileID: 402300, guid: bf929cdd72b25ee4e9ebe93e49ea0f96, type: 3}
-      propertyPath: m_LocalRotation.y
-      value: -0
-      objectReference: {fileID: 0}
-    - target: {fileID: 402300, guid: bf929cdd72b25ee4e9ebe93e49ea0f96, type: 3}
-      propertyPath: m_LocalRotation.z
-      value: -0
-      objectReference: {fileID: 0}
-    - target: {fileID: 402300, guid: bf929cdd72b25ee4e9ebe93e49ea0f96, type: 3}
-      propertyPath: m_LocalEulerAnglesHint.x
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 402300, guid: bf929cdd72b25ee4e9ebe93e49ea0f96, type: 3}
-      propertyPath: m_LocalEulerAnglesHint.y
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 402300, guid: bf929cdd72b25ee4e9ebe93e49ea0f96, type: 3}
-      propertyPath: m_LocalEulerAnglesHint.z
-      value: 0
-      objectReference: {fileID: 0}
-    m_RemovedComponents: []
-  m_SourcePrefab: {fileID: 100100000, guid: bf929cdd72b25ee4e9ebe93e49ea0f96, type: 3}
---- !u!4 &746124513412316377 stripped
-Transform:
-  m_CorrespondingSourceObject: {fileID: 402300, guid: bf929cdd72b25ee4e9ebe93e49ea0f96, type: 3}
-  m_PrefabInstance: {fileID: 746124513411915685}
-  m_PrefabAsset: {fileID: 0}
+  speed: -7
+  destroyBoundPosZ: -12
 --- !u!1001 &5880813059114251105
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -288,7 +213,7 @@ MeshCollider:
   m_GameObject: {fileID: 5880813059114160817}
   m_Material: {fileID: 0}
   m_IsTrigger: 0
-  m_Enabled: 1
+  m_Enabled: 0
   serializedVersion: 4
   m_Convex: 1
   m_CookingOptions: 30

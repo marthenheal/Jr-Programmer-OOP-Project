@@ -4,13 +4,12 @@ using UnityEngine;
 
 public class ObjectToSpawn : MonoBehaviour //INHERITANCE -> parent class for any spawned object
 {
-
     public virtual void MoveDown(float speed) //ABSTRACTION
     {
         transform.Translate(Vector3.back * Time.deltaTime * speed);
     }
 
-    public void DestroyOutOfBounds(float boundPosZ) //ABSTRACTION
+    public virtual void DestroyOutOfBounds(float boundPosZ) //ABSTRACTION
     {
         if (transform.position.z < boundPosZ)
         {

@@ -115,6 +115,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   speed: 2000
   explosionParticle: {fileID: 1093521673}
+  rocketPrefab: {fileID: 9193008720149670861, guid: 8a6a3236ea85fca4b8d9adf52d0071a3, type: 3}
 --- !u!54 &8883740721554795747
 Rigidbody:
   m_ObjectHideFlags: 0

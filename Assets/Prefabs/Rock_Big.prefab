@@ -116,7 +116,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   speed: 3
-  destroyBoundPosZ: -10
+  destroyBoundPosZ: -12
   explosionParticle: {fileID: 448919400484017263}
 --- !u!1001 &448919400499635823
 PrefabInstance:

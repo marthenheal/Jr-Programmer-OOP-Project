@@ -26,7 +26,7 @@ public class Obstacle : ObjectToSpawn //INHERITANCE -> Obstacle is a child of Ob
         }      
     }
 
-    private void OnCollisionEnter(Collision collision) //idk why particles isn't working on enemies, but they work on rocks, so...
+    private void OnCollisionEnter(Collision collision)
     {
         if (collision.gameObject.CompareTag("Enemy"))
         {

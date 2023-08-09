@@ -6,13 +6,18 @@ public class PlayerController : MonoBehaviour
 {
     [SerializeField] float speed = 30f;
     //constraint player's movements
-    private float zBound = 5.5f;
-    private float xBound = 13.0f;
+    private float zBound = 9f; 
+    private float zBoundTopOffset = 4.5f;
+    private float xBound = 12.5f;
+    private float reloadTime = 0.5f;
+    private float elapsedTime = 0f;
 
     private Rigidbody playerRb;
     public ParticleSystem explosionParticle;
 
     private GameUIHandler gameUI;
+
+    public GameObject rocketPrefab;
 
     // Start is called before the first frame update
     void Start()
@@ -24,11 +29,18 @@ public class PlayerController : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        elapsedTime += Time.deltaTime;
         if (gameUI.isGameActive) 
         {
             MovePlayer();
             ConstrainPlayerPosition();
-        }       
+        }     
+        
+        if (Input.GetKeyDown(KeyCode.Space) && elapsedTime > reloadTime) //why this time stopper isn't working?
+        {
+            Instantiate(rocketPrefab, transform.position, Quaternion.identity);
+            elapsedTime = 0f;
+        }
     }
 
     //Moves player in horizontal & vertical based on player's input
@@ -49,9 +61,9 @@ public class PlayerController : MonoBehaviour
         {
             transform.position = new Vector3(transform.position.x, transform.position.y, -zBound);
         }
-        if (transform.position.z > zBound)
+        if (transform.position.z > zBound - zBoundTopOffset)
         {
-            transform.position = new Vector3(transform.position.x, transform.position.y, zBound);
+            transform.position = new Vector3(transform.position.x, transform.position.y, zBound - zBoundTopOffset);
         }
         //x-axis constraints
         if (transform.position.x < -xBound)

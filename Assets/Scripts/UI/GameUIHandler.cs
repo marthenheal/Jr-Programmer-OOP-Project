@@ -60,6 +60,11 @@ public class GameUIHandler : MonoBehaviour
     {
         isGameActive = true;
         isGameOver = false;
+        if (Time.timeScale == 0f)
+        {
+            Time.timeScale = 1.0f;
+        }
+
         if (DataManager.Instance != null)
         {
             playerName = DataManager.Instance.playerName;

@@ -18,7 +18,7 @@ public class GameUIHandler : MonoBehaviour
     public bool isGameActive;
     private bool isGameOver;
     private int score = 0;
-    private int highScore;
+    private int highScore = 0;
 
     // Start is called before the first frame update
     void Start()
@@ -65,6 +65,11 @@ public class GameUIHandler : MonoBehaviour
             playerName = DataManager.Instance.playerName;
             playerNameText.text = "Pilot's name: " + DataManager.Instance.playerName;
         }
+        else
+        {
+            playerNameText.text = "Pilot's name: " + playerName;
+        }
+
         highScoreText.text = LoadHighScore();
         scoreText.text = "SCORE: " + score;
     }

@@ -3,23 +3,27 @@ using System.Collections.Generic;
 using UnityEngine;
 using TMPro;
 using UnityEngine.SceneManagement;
+using System.IO;
 
 public class GameUIHandler : MonoBehaviour
 {
-    public TextMeshProUGUI playerName;
+    public TextMeshProUGUI playerNameText;
     public TextMeshProUGUI scoreText;
+    public TextMeshProUGUI highScoreText;
     public GameObject pauseScreen;
     public GameObject gameOverScreen;
 
+    private string playerName = "[UNIDENTIFIED]";
+    private string highScoreName = "[UNIDENTIFIED]";
     public bool isGameActive;
-    public bool isGameOver;
+    private bool isGameOver;
     private int score = 0;
+    private int highScore;
 
     // Start is called before the first frame update
     void Start()
     {
-        StartGame();
-        scoreText.text = "SCORE: " + score;
+        StartGame();      
     }
 
     // Update is called once per frame
@@ -40,6 +44,16 @@ public class GameUIHandler : MonoBehaviour
                 pauseScreen.SetActive(false);
             }
         }
+
+        //adding ability to interact with buttons via keyboard
+        if (Input.GetKeyDown(KeyCode.Space) && isGameOver)
+        {
+            RestartGame();
+        }
+        else if (Input.GetKeyDown(KeyCode.Escape) && isGameOver)
+        {
+            BackToMenu();
+        }
     }
 
     public void StartGame() //ABSTRACTION
@@ -48,8 +62,11 @@ public class GameUIHandler : MonoBehaviour
         isGameOver = false;
         if (DataManager.Instance != null)
         {
-            playerName.text = "Pilot's name: " + DataManager.Instance.playerName;
+            playerName = DataManager.Instance.playerName;
+            playerNameText.text = "Pilot's name: " + DataManager.Instance.playerName;
         }
+        highScoreText.text = LoadHighScore();
+        scoreText.text = "SCORE: " + score;
     }
 
     public void GameOver() //ABSTRACTION
@@ -57,6 +74,10 @@ public class GameUIHandler : MonoBehaviour
         isGameActive = false;
         isGameOver = true;
         gameOverScreen.SetActive(true);
+        if (score > highScore)
+        {
+            SaveNameAndScore(playerName, score);
+        }
     }
 
     public void RestartGame() //ABSTRACTION
@@ -73,5 +94,37 @@ public class GameUIHandler : MonoBehaviour
     {
         score += value;
         scoreText.text = "SCORE: " + score;
+    }
+
+    [System.Serializable]
+    class SaveData
+    {
+        public string name;
+        public int highScore;
+    }
+
+    public void SaveNameAndScore(string playerName, int scoreValue)
+    {
+        SaveData data = new SaveData();
+        data.name = playerName;
+        data.highScore = scoreValue;
+
+        string json = JsonUtility.ToJson(data);
+        File.WriteAllText(Application.persistentDataPath + "/highscorefile.json", json);
+    }
+
+    public string LoadHighScore()
+    {
+        string path = Application.persistentDataPath + "/highscorefile.json";
+        if (File.Exists(path))
+        {
+            string json = File.ReadAllText(path);
+            SaveData data = JsonUtility.FromJson<SaveData>(json);
+
+            highScoreName = data.name;
+            highScore = data.highScore;
+            return "HIGHSCORE: " + highScoreName + " - " + highScore;
+        }
+        return null;
     }
 }
